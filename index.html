@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#6926a6">
+  <title>Sweet Kingdom — Match & Magic</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Sweet Kingdom home">
+      <span class="brand-crown">♛</span><span><b>Sweet</b><small>KINGDOM</small></span>
+    </a>
+    <div class="top-stats">
+      <div class="stat"><span class="stat-icon">🪙</span><b id="coins">250</b></div>
+      <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="screen active" id="homeScreen">
+      <div class="hero">
+        <div class="hero-spark spark-a">✦</div><div class="hero-spark spark-b">✧</div>
+        <div class="hero-copy">
+          <span class="eyebrow">A SWEET LITTLE ADVENTURE</span>
+          <h1>Sweet <em>Kingdom</em></h1>
+          <p>Match candies. Make magic.<br>Restore the sweetest kingdom!</p>
+          <button class="primary-btn" id="playBtn">PLAY NOW <span>➜</span></button>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="rainbow"></div><div class="castle">🏰</div>
+          <div class="float-candy candy-one">🍭</div><div class="float-candy candy-two">🍬</div>
+          <div class="float-candy candy-three">🍡</div><div class="float-candy candy-four">🍩</div>
+          <div class="cloud cloud-one"></div><div class="cloud cloud-two"></div>
+        </div>
+      </div>
+      <div class="home-cards">
+        <button class="feature-card" id="dailyBtn"><span class="feature-icon">🎁</span><span><b>Daily Treat</b><small id="dailyStatus">A little gift for you</small></span><span class="card-arrow">›</span></button>
+        <button class="feature-card" id="levelsBtn"><span class="feature-icon">🗺️</span><span><b>Kingdom Map</b><small>Explore your journey</small></span><span class="card-arrow">›</span></button>
+      </div>
+      <div class="home-footer"><span>✦</span> MADE OF MAGIC & SUGAR <span>✦</span></div>
+    </section>
+
+    <section class="screen" id="mapScreen">
+      <div class="screen-heading"><button class="back-btn" data-home>←</button><div><span class="eyebrow">YOUR ADVENTURE</span><h2>Kingdom Map</h2></div><span class="map-badge">🗺️</span></div>
+      <div class="map-progress"><div class="progress-label"><span>Kingdom progress</span><b id="mapProgressText">Level 1 of 100</b></div><div class="progress-track"><span id="mapProgressBar"></span></div></div>
+      <div class="map-path" id="mapPath"></div>
+      <div class="map-bottom"><span>🌷</span><span>Keep matching to unlock new lands!</span><span>🦋</span></div>
+    </section>
+
+    <section class="screen" id="gameScreen">
+      <div class="game-heading">
+        <button class="back-btn" id="gameBack">←</button>
+        <div class="level-title"><span class="eyebrow">SWEET ADVENTURE</span><h2 id="levelName">Sugar Meadow</h2></div>
+        <button class="icon-btn small" id="restartBtn" aria-label="Restart level">↻</button>
+      </div>
+      <div class="game-stats">
+        <div class="game-stat"><small>LEVEL</small><b id="levelNumber">01</b></div>
+        <div class="goal-box"><small>COLLECT CANDIES</small><div id="goals" class="goals"></div></div>
+        <div class="game-stat moves-stat"><small>MOVES</small><b id="moves">25</b></div>
+      </div>
+      <div class="score-row"><span>⭐ <b id="score">0</b></span><div class="score-track"><span id="scoreBar"></span></div><span id="targetScore">0 / 2500</span></div>
+      <div class="board-wrap"><div id="board" class="board" aria-label="Candy match three board"></div><div class="board-glow"></div></div>
+      <div class="booster-row">
+        <button class="booster" data-booster="hammer"><span>🔨</span><b>Hammer</b><small id="hammerCount">2 left</small></button>
+        <button class="booster" data-booster="shuffle"><span>🔀</span><b>Shuffle</b><small id="shuffleCount">1 left</small></button>
+        <button class="booster" data-booster="extra"><span>➕</span><b>+5 Moves</b><small id="extraCount">1 left</small></button>
+      </div>
+      <p class="hint" id="hint">Swap two neighbouring candies to match 3 or more!</p>
+    </section>
+
+    <section class="screen" id="resultScreen">
+      <div class="result-card">
+        <div class="result-confetti" id="resultEmoji">🎉</div><span class="eyebrow" id="resultEyebrow">SWEET SUCCESS</span>
+        <h2 id="resultTitle">Level Complete!</h2><p id="resultText">You made the kingdom a little sweeter.</p>
+        <div class="result-rewards"><div><span>⭐</span><b id="resultStars">★★★</b><small>Stars earned</small></div><div><span>🪙</span><b id="resultCoins">+50</b><small>Sweet coins</small></div><div><span>🍬</span><b id="resultScore">2500</b><small>Final score</small></div></div>
+        <button class="primary-btn" id="resultPrimary">NEXT LEVEL <span>➜</span></button><button class="secondary-btn" id="resultSecondary">Back to Kingdom</button>
+      </div>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <button class="nav-item selected" data-nav="homeScreen"><span>🏠</span><small>Home</small></button>
+    <button class="nav-item" data-nav="mapScreen"><span>🗺️</span><small>Map</small></button>
+    <button class="nav-item" data-nav="gameScreen" id="navPlay"><span>🍭</span><small>Play</small></button>
+    <button class="nav-item" id="navDaily"><span>🎁</span><small>Rewards</small></button>
+  </nav>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="modal-emoji" id="modalEmoji">✨</div><h2 id="modalTitle">A little magic</h2><p id="modalText"></p><div id="modalExtra"></div><button class="primary-btn modal-action" id="modalAction">Lovely!</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="js/game.js"></script>
+</body>
+</html>
